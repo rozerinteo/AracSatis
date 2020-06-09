@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/navbar.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:define name="content"><br/>
+        <h:form id="Model-table">
+            <h:outputLabel value="İsim: "></h:outputLabel>&nbsp;&nbsp;&nbsp;&nbsp;<h:inputText value="#{modelController.model.model_isim}"/><br/>
+            <h:outputLabel value="Yakıt: "></h:outputLabel>&nbsp;&nbsp;&nbsp;<h:inputText value="#{modelController.model.model_yakit}"/><br/>
+            <h:outputLabel value="Renk: "></h:outputLabel>&nbsp;&nbsp;&nbsp;<h:inputText value="#{modelController.model.model_renk}"/><br/>
+            <h:outputLabel value="Yıl: "></h:outputLabel>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:inputText value="#{modelController.model.model_yil}"/><br/>
+            <h:outputLabel value="Vites: "></h:outputLabel>&nbsp;&nbsp;&nbsp;<h:inputText value="#{modelController.model.model_vites}"/><br/>
+            <h:commandButton action="#{modelController.create()}" value="Create"/>
+            
+       </h:form>
+    </ui:define>
+</ui:composition>

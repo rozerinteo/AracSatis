@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/navbar.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:define name="content">
+        <h:form id="bayi-table">
+            <h:commandButton styleClass="btn btn-dark mt-3" action="/Bayi/create" value="Create new bayi"/>
+            <hr/>
+            <pre>Page #{bayiController.page} of #{bayiController.pageCount}</pre>
+            <div class="btn-group">
+                <h:commandButton action="#{bayiController.previous()}" value="Previous" styleClass="btn btn-outline-dark"></h:commandButton>
+                <h:commandButton action="#{bayiController.next()}" value="Next" styleClass="btn btn-outline-dark"></h:commandButton>
+            </div>
+            <h:dataTable styleClass="table table-striped table-dark mt-3" value="#{bayiController.list}" var="b">
+                <h:column>
+                    <f:facet name="header">bayi_id</f:facet>
+                    #{b.bayi_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Bayi adı</f:facet>
+                        #{b.bayi_ad}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Bayi Adres</f:facet>
+                        #{b.bayi_adres}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Bayi Sehir</f:facet>
+                        #{b.bayi_sehir}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Bayi tel</f:facet>
+                        #{b.bayi_tel}
+                </h:column>
+                <h:column>
+                    <div class="btn-group" role="group">
+                        <h:commandButton styleClass="btn btn-outline-success" action="#{bayiController.updateForm(b)}" value="update"/>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <h:commandButton styleClass="btn btn-outline-danger" action="#{bayiController.delete(b)}" value="delete">
+                            <f:ajax execute="@this" render="bayi-table"/>
+                        </h:commandButton>
+                    </div>
+                </h:column>
+</h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/navbar.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+        <h:form id="model-table">
+            <h:commandButton styleClass="btn btn-dark mt-3" action="/Model/create" value="Create new model"/>
+            <hr/>
+            <pre>Page #{modelController.page} of #{modelController.pageCount}</pre>
+            <div class="btn-group">
+                <h:commandButton action="#{modelController.previous()}" value="Previous" styleClass="btn btn-outline-dark"></h:commandButton>
+                <h:commandButton action="#{modelController.next()}" value="Next" styleClass="btn btn-outline-dark"></h:commandButton>
+            </div>
+            <h:dataTable styleClass="table table-striped table-dark mt-3" value="#{modelController.list}" var="m">
+                <h:column>
+                    <f:facet name="header">model_id</f:facet>
+                    #{m.model_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">model_isim</f:facet>
+                    #{m.model_isim}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">model_yakit</f:facet>
+                    #{m.model_yakit}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">model_renk</f:facet>
+                    #{m.model_renk}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">model_yil</f:facet>
+                    #{m.model_yil}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">model_vites</f:facet>
+                    #{m.model_vites}
+                </h:column>
+                <h:column>
+                    <div class="btn-group" role="group">
+                        <h:commandButton styleClass="btn btn-outline-success" action="#{modelController.updateForm(m)}" value="update"/>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <h:commandButton styleClass="btn btn-outline-danger" action="#{modelController.delete(m)}" value="delete">
+                            <f:ajax execute="@this" render="model-table"/>
+                        </h:commandButton>
+                    </div>
+                </h:column>
+</h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>

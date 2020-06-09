@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/navbar.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:define name="content"><br/>
+        <h:form id="Kullanici-table">
+            <h:outputLabel value="Kullanıcı Mail: "></h:outputLabel>&nbsp;&nbsp;&nbsp;<h:inputText value="#{kullaniciController.kullanici.kullanici_mail}"/><br/>
+            <h:outputLabel value="Kullanıcı Şifre: "></h:outputLabel>&nbsp;&nbsp; <h:inputText value="#{kullaniciController.kullanici.kullanici_sifre}"/><br/>
+            <h:outputLabel value="Kullanıcı Tel: "></h:outputLabel>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:inputText value="#{kullaniciController.kullanici.kullanici_tel}"/><br/>
+            <h:outputLabel value="İletişim İd: " ></h:outputLabel>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <h:inputText value="#{kullaniciController.kullanici.iletisim_id}"/><br/>
+            <h:commandButton action="#{kullaniciController.update()}" value="Update"/>
+            
+       </h:form>
+    </ui:define>
+</ui:composition>

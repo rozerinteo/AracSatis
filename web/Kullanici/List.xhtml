@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/navbar.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+        <h:form id="kullanici-table">
+            <h:commandButton styleClass="btn btn-dark mt-3" action="/Kullanici/create" value="Create new kullanici"/>
+            <hr/>
+            <pre>Page #{kullaniciController.page} of #{kullaniciController.pageCount}</pre>
+            <div class="btn-group">
+                <h:commandButton action="#{kullaniciController.previous()}" value="Previous" styleClass="btn btn-outline-dark"></h:commandButton>
+                <h:commandButton action="#{kullaniciController.next()}" value="Next" styleClass="btn btn-outline-dark"></h:commandButton>
+            </div>
+            <h:dataTable styleClass="table table-striped table-dark mt-3" value="#{kullaniciController.list}" var="k">
+                <h:column>
+                    <f:facet name="header">kullanici_id</f:facet>
+                    #{k.kullanici_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Kullanıcı mail</f:facet>
+                        #{k.kullanici_mail}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Kullanıcı şifre</f:facet>
+                        #{k.kullanici_sifre}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Kullanıcı Tel</f:facet>
+                        #{k.kullanici_tel}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">iletisim_id</f:facet>
+                        #{k.iletisim_id}
+                </h:column>
+                <h:column>
+                    <div class="btn-group" role="group">
+                        <h:commandButton styleClass="btn btn-outline-success" action="#{kullaniciController.updateForm(k)}" value="update"/>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <h:commandButton styleClass="btn btn-outline-danger" action="#{kullaniciController.delete(k)}" value="delete">
+                            <f:ajax execute="@this" render="kullanici-table"/>
+                        </h:commandButton>
+                    </div>
+                </h:column>
+        </h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
